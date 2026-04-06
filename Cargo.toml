@@ -1,0 +1,50 @@
+[package]
+name = "brainbit"
+version = "0.0.1"
+edition = "2021"
+description = "Rust library for BrainBit EEG headband devices via the NeuroSDK2 C library (runtime-loaded)"
+keywords = ["eeg", "brainbit", "neurosdk", "bci", "bluetooth"]
+authors = ["Eugene Hauptmann"]
+license-file = "LICENSE"
+homepage = "https://github.com/eugenehp/brainbit-rs"
+repository = "https://github.com/eugenehp/brainbit-rs"
+documentation = "https://docs.rs/brainbit"
+readme = "README.md"
+
+[features]
+default = ["tui"]
+tui = [
+    "dep:ratatui",
+    "dep:crossterm",
+]
+
+[lib]
+name = "brainbit"
+path = "src/lib.rs"
+
+[[bin]]
+name = "brainbit"
+path = "src/main.rs"
+
+[[bin]]
+name = "brainbit-tui"
+path = "src/bin/tui.rs"
+required-features = ["tui"]
+
+[dependencies]
+# Dynamic loading of the neurosdk2 shared library at runtime
+libloading = "0.8"
+
+# Error handling
+thiserror = "2"
+
+# Logging
+log = "0.4"
+env_logger = "0.11"
+
+# OS-level sandboxing (seccomp on Linux, libc on all)
+libc = "0.2"
+
+# TUI (optional)
+ratatui = { version = "0.30", features = ["crossterm"], optional = true }
+crossterm = { version = "0.29", optional = true }
