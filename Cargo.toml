@@ -1,6 +1,6 @@
 [package]
 name = "brainbit"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 description = "Rust library for BrainBit EEG headband devices via the NeuroSDK2 C library (runtime-loaded)"
 keywords = ["eeg", "brainbit", "neurosdk", "bci", "bluetooth"]
@@ -48,3 +48,6 @@ libc = "0.2"
 # TUI (optional)
 ratatui = { version = "0.30", features = ["crossterm"], optional = true }
 crossterm = { version = "0.29", optional = true }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+ctrlc = "3"

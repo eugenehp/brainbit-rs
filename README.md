@@ -72,10 +72,10 @@ Use `brainbit` as a library in your own project:
 ```toml
 [dependencies]
 # Full build (includes the ratatui TUI feature):
-brainbit = "0.0.1"
+brainbit = "0.0.2"
 
 # Library only — skips ratatui / crossterm compilation:
-brainbit = { version = "0.0.1", default-features = false }
+brainbit = { version = "0.0.2", default-features = false }
 ```
 
 ```rust
